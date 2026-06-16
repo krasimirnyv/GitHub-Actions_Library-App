@@ -1,2 +1,5 @@
 node_modules/
+
 test-results/.last-run.json
+
+.DS_Store

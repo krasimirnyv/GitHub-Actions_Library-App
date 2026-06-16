@@ -1,1 +1,1 @@
-export const settings = { hots:'https://library-app-be-cud1.onrender.com' };
+export const settings = { host:'https://libraryjune2026-be.onrender.com' };
