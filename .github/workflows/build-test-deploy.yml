@@ -25,7 +25,7 @@ jobs:
       run: npm install
       
     - name: Manualy change the config.js file
-      run: echo "export const settings = { host:'http:localhost:3030' };" > src/api/config.js
+      run: echo "export const settings = { host:'http://localhost:3030' };" > src/config.js
        
     - name: Run Back-End
       run: npm run server &
@@ -40,7 +40,6 @@ jobs:
       run: npm run test
       
   deploy-be:
-
     needs: build_test
     
     runs-on: ubuntu-latest
@@ -55,7 +54,6 @@ jobs:
           wait_deploy: true
 
   deploy-fe:
-
     needs: deploy-be
     
     runs-on: ubuntu-latest
