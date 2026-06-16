@@ -27,7 +27,10 @@ jobs:
 
     - name: Install npm Dependencies
       run: npm install
-
+      
+    - name: Manualy change the config.js file
+      run: echo "export const settings = { host:'http:localhost:3030' };" > src/api/config.js
+       
     - name: Run Back-End
       run: npm run server &
       
@@ -36,10 +39,7 @@ jobs:
 
     - name: Install Playwright Browsers
       run: npx playwright install
-      
-    - name: Manualy change the config.js file
-      run: echo "export const settings = { host:'http:localhost:3030' };" > src/api/config.js
-       
+
     - name: Run Tests
       run: npm run test
       
