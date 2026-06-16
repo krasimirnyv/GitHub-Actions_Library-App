@@ -10,7 +10,7 @@ on:
 jobs:
   build_test:
 
-    runs-on: ubuntu-24.04.4
+    runs-on: ubuntu-latest
         
     steps:
     - name: Checkout the repository
