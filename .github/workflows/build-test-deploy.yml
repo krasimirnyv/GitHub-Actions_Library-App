@@ -39,3 +39,32 @@ jobs:
     - name: Run Tests
       run: npm run test
       
+  deploy-be:
+
+    needs: build_test
+    
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Deploy Back-End to production
+        uses: JorgeLNJunior/render-deploy@v1.5.0
+        with:
+          service_id: ${{ secrets.SERVICE_BE_ID }}
+          api_key: ${{ secrets.API_KEY }}
+          wait_deploy: true
+
+  deploy-fe:
+
+    needs: deploy-be
+    
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Deploy Front-End to production
+        uses: JorgeLNJunior/render-deploy@v1.5.0
+        with:
+          service_id: ${{ secrets.SERVICE_FE_ID }}
+          api_key: ${{ secrets.API_KEY }}
+          wait_deploy: true
