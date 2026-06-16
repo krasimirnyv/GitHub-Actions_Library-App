@@ -16,7 +16,7 @@ jobs:
         node-version: [18.x, 20.x, 22.x, 24.x]
         
     steps:
-    - name: Checkout repository
+    - name: Checkout the repository
       uses: actions/checkout@v6
       
     - name: Use Node.js ${{ matrix.node-version }}
@@ -24,15 +24,18 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Install npm dependencies
+    - name: Install npm Dependencies
       run: npm install
 
-    - name: Run back-end
+    - name: Run Back-End
       run: npm run server &
       
-    - name: Run front-end
+    - name: Run Front-End
       run: npm run start &
 
-    - name: Run tests
+    - name: Install Playwright Browsers
+      run: npx playwright install
+      
+    - name: Run Tests
       run: npm run test
       
